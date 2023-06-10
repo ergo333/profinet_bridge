@@ -1,0 +1,32 @@
+<launch>
+
+    <arg name="PLC_ip" default="10.197.14.21" />
+    <arg name="PLC_rack" default="0" />
+    <arg name="PLC_slot" default="0" />
+    <arg name="PLC_port" default="102" />
+
+    <arg name="data_write_topic" default="profinet_bridge/write" />
+    <arg name="data_read_topic" default="profinet_bridge/read" />
+    <arg name="data_write_service" default="profinet_bridge/write" />
+    <arg name="data_read_service" default="profinet_bridge/read" />
+
+    <arg name="frequency" default="100" />
+
+    <node pkg="profinet_bridge" name="profinet_bridge" type="main.py" output="screen">
+
+        <param name="PLC_ip" type="str" value="$(arg PLC_ip)" />
+        <param name="PLC_rack" type="int" value="$(arg PLC_rack)" />
+        <param name="PLC_slot" type="int" value="$(arg PLC_slot)" />
+        <param name="PLC_port" type="int" value="$(arg PLC_port)" />
+
+        <param name="data_write_topic" type="str" value="$(arg data_write_topic)" />
+        <param name="data_read_topic" type="str" value="$(arg data_read_topic)" />
+        <param name="data_write_service" type="str" value="$(arg data_write_service)" />
+        <param name="data_read_service" type="str" value="$(arg data_read_service)" />
+
+        <param name="frequency" type="int" value="$(arg frequency)" />
+
+        <rosparam file="$(find profinet_bridge)/cfg/db_data_definition.yaml" />
+    </node>
+
+</launch>

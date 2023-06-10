@@ -1,0 +1,2 @@
+string variable_name
+byte[] data

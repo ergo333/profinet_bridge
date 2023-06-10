@@ -1,0 +1,1 @@
+https://python-snap7.readthedocs.io/en/latest/introduction.html
